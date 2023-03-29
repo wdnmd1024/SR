@@ -1,0 +1,13 @@
+!!python/object:argparse.Namespace
+save_dir: exp/NCNet2
+SR_rate: 4
+pretrained_model: ''
+epochs: 5000
+batch_size: 256
+augment: false
+workers: 0
+device: 0
+div_factor: 50
+final_div_factor: 0.5
+lr_max: 0.0025
+pct_epoch: 50
