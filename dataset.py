@@ -50,20 +50,20 @@ class DIV2K(Dataset):  # for training/testing
         if split == 'train':
             # self.LR_dir = os.path.join('./DIV2K/DIV2K_train_LR_bicubic', 'X'+str(SR_rate))
             # self.HR_dir = './DIV2K/DIV2K_train_HR'
-            self.LR_dir = 'D:/SR/DIV2K128/DIV2K_train_LR_bicubic/X4'
-            self.HR_dir = 'D:/SR/DIV2K128/DIV2K_train_HR'
+            self.LR_dir = '/content/SR/DIV2K_train_LR_bicubic/X4'
+            self.HR_dir = '/content/SR/DIV2K_train_HR'
             self.img_names = sorted(os.listdir(self.HR_dir))[:792]
         elif split == 'valid':
             # self.LR_dir = os.path.join('./DIV2K/DIV2K_train_LR_bicubic', 'X' + str(SR_rate))
             # self.HR_dir = './DIV2K/DIV2K_train_HR'
-            self.LR_dir = 'D:/SR/DIV2K128/DIV2K_train_LR_bicubic/X4'
-            self.HR_dir = 'D:/SR/DIV2K128/DIV2K_train_HR'
+            self.LR_dir = '/content/SR/DIV2K_train_LR_bicubic/X4'
+            self.HR_dir = '/content/SR/DIV2K_train_HR'
             self.img_names = sorted(os.listdir(self.HR_dir))[792:]
         elif split == 'test':
             # self.LR_dir = os.path.join('./DIV2K/DIV2K_valid_LR_bicubic', 'X'+str(SR_rate))
             # self.HR_dir = './DIV2K/DIV2K_valid_HR'
-            self.LR_dir = 'D:/SR/DIV2K128/DIV2K_valid_LR_bicubic/X4'
-            self.HR_dir = 'D:/SR/DIV2K128/DIV2K_valid_HR'
+            self.LR_dir = '/content/SR/DIV2K128/DIV2K_valid_LR_bicubic/X4'
+            self.HR_dir = '/content/SR/DIV2K128/DIV2K_valid_HR'
             self.img_names = sorted(os.listdir(self.HR_dir))
         else:
             raise NameError('data split must be "train", "valid" or "test". ')
@@ -110,7 +110,7 @@ class DIV2K(Dataset):  # for training/testing
 
 if __name__ == '__main__':
     os.makedirs('./test_dataloader/', exist_ok=True)
-    train_dataloader = create_dataloader('train', 4, False, batch_size=1, shuffle=False, num_workers=1)
+    train_dataloader = create_dataloader('train', 4, False, batch_size=1, shuffle=False, num_workers=2)
     print(f"len(train): {len(train_dataloader)}")
     LR_img, HR_img, img_names = next(iter(train_dataloader))
     print(f"LR_img shape: {LR_img.size()}")
